@@ -19,7 +19,7 @@
 	          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Unidad I</a>
+	          <a class="nav-link" href="unidad1.html">Unidad I</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="#">Unidad II</a>
@@ -31,14 +31,6 @@
 	    </div>
 	  </div>
 	</nav>
-
-    <audio id="musica" src="LOVER IS A DAY (slowed + reverb).mp3"></audio>
-    <div>
-            <button onclick="document.getElementById('musica').play()">Play</button>
-            <button onclick="document.getElementById('musica').pause()">Pausa</button>
-            <button onclick="document.getElementById('musica').volume+=0.1">Volumen +</button>
-            <button onclick="document.getElementById('musica').volume-=0.1">Volumen -</button>
-    </div> 
 <hr />
 <h2> video</h2>
 <video widht="320" height="240" id="videos">
