@@ -3,35 +3,35 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Desarrollo movil multiplataforma</title>
+	<title>Desarrollo Movil Multiplataforma</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="index.html">Listado de Practicás - D.M.M.P</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarNav">
-	      <ul class="navbar-nav">
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="unidad1.html">Unidad I</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="#">Unidad II</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link disabled">Unidad III</a>
-	        </li>
-	      </ul>
-	    </div>
-        
-	  </div>
-	</nav>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Listado de Practicas - D.M.M.P</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="unidad1.html">Unidad I</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Unidad II</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Unidad III</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <H1>UNIDAD 1 </H1>
 
 <!-- Button trigger modal -->
@@ -116,7 +116,161 @@
       </div>
     </div>
   </div>
+
+
+
+<!-- CRUD -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#practica5">Practica 5 - CRUD</button>
+
+   <!-- Modal -->
+        <div class="modal fade" id="practica5" tabindex="-1"     aria-labelledby="practica5" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="practica5">CRUD</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div id="appCrud" class="container">
+            <section class="form">
+              <form action="" class="text-center">
+                <input v-model="nombre" @keyup.enter="crearPaciente" type="text" class="form-control" placeholder="Nombre: " name="nombre">
+                <br />
+                <input v-model="edad" @keyup.enter="crearPaciente" type="number" class="form-control" placeholder="Edad: " name="edad">
+                <br />
+                <input v-model="direccion" @keyup.enter="crearPaciente" type="text" class="form-control" placeholder="Direccion: " name="direccion">
+                <br />
+                <input v-model="correo" @keyup.enter="crearPaciente" type="text" class="form-control" placeholder="Correo Electronico: " name="correo">
+                <br />
+                <input v-model="numero" @keyup.enter="crearPaciente" type="number" class="form-control" placeholder=" Telefono: " name="numero">
+                <br />
+
+                <input type="button" class="btn btn-info" @click="crearPaciente" value="Registrar Paciente">
+              </form>
+            </section>
+
+            <section class="data">
+              <caption><center><h1>Registro de Pacientes</h1></center></caption>
+              <table class="table">
+                <thead>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Edad</th>
+                  <th scope="col">Direccion</th>
+                  <th scope="col">Correo Electronico</th>
+                  <th scope="col">Telefono</th>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr v-for="(paciente, index) in pacientes">
+                      <td>{{paciente.id}}</td>
+                      <td>{{paciente.nombre}}</td>
+                      <td>{{paciente.edad}}</td>
+                      <td>{{paciente.direccion}}</td>
+
+                      <td>
+                      	  <span v-if="formActualizar && idActualizar == index">
+                          <input v-model="correoActualizar" type="text" class="form-control">
+                      </span>
+                      <span v-else>
+                        {{paciente.correo}}
+                      </span>
+                      </td>
+
+                      <td>
+                      	  <span v-if="formActualizar && idActualizar == index">
+                          <input v-model="numeroActualizar" type="text" class="form-control">
+                      </span>
+                      <span v-else>
+                        {{paciente.numero}}
+                      </span>
+                      </td>
+
+                      <td>
+                        <span v-if="formActualizar && idActualizar == index">
+                          <button @click="guardarActualizacion(index)" class="btn btn-success">
+                          Guardar</button>
+                        </span>
+                        <span v-else>
+                          <button @click="verFormActualizar(index)" class="btn btn-warning">Actualizar
+                          </button>
+                          <button @click="borrarPaciente(index)" class="btn btn-danger">Borrar</button>
+                        </span>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function (){
+    new Vue({
+      el: '#appCrud',
+      data: {
+        nombre: '',
+        edad: '',
+        formActualizar: false,
+        idActualizar: -1,
+        correoActualizar: '',
+        numeroActualizar: '',
+        pacientes: []
+      },
+      methods:{
+        crearPaciente: function (){
+          this.pacientes.push({
+            id: + new Date(),
+            nombre: this.nombre,
+            edad: this.edad,
+            direccion: this.direccion,
+            correo: this.correo,
+            numero: this.numero
+
+          });
+          this.nombre = '';
+          this.edad = '';
+          this.direccion = '';
+          this.correo = '';
+          this.numero = '';
+        },
+        verFormActualizar: function (paciente_id){
+          this.idActualizar = paciente_id;
+          this.correoActualizar = this.pacientes[paciente_id].correo;
+          this.numeroActualizar = this.pacientes[paciente_id].numero;
+          this.formActualizar = true;
+        },
+        borrarPaciente: function (paciente_id){
+          this.pacientes.splice(paciente_id, 1);
+        },
+        guardarActualizacion: function (paciente_id){
+          this.formActualizar = false;
+          this.pacientes[paciente_id].correo = this.correoActualizar;
+          this.pacientes[paciente_id].numero =this.numeroActualizar;
+        }
+
+      }
+    });
+  });
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </html>
