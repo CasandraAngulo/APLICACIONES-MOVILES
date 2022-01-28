@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="33.5dp"
+        android:text="Práctica I - Desarrollo Móvil Multiplataforma"
+        />
+
+    <Button
+        android:layout_width="42.5dp"
+        android:layout_height="wrap_content"
+        android:text="☰ "
+        android:id="@+id/btnUno"
+        android:onClick="onClickWebBrowser"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="64.5dp"
+        android:text="                      CENTRO COMERCIAL"
+        />
+
+    <Button
+        android:layout_width="189.5dp"
+        android:layout_height="wrap_content"
+        android:text=" Área de cajas"
+        android:id="@id/btnDos"
+        android:onClick="onClickWebBrowser"
+        />
+    <Button
+        android:layout_width="184.0dp"
+        android:layout_height="82.5dp"
+        android:text="RECURSOS HUMANOS"
+        android:id="@+id/btnTres"
+        android:onClick="onClickMakeCalls"
+        android:layout_marginLeft="0.0dp" 
+        />
+    <Button
+        android:layout_width="184.0dp"
+        android:layout_height="82.5dp"
+        android:text="ESTACIONAMIENTO"
+        android:id="@+id/btnCuatro"
+        android:onClick="onClickMakeCalls"
+        android:layout_marginLeft="0.0dp" 
+        />
+
+    <Button
+        android:layout_width="81.0dp"
+        android:layout_height="wrap_content"
+        android:text="EXIT"
+        android:id="@+id/btnCinco"
+        android:onClick="onClickMakeCalls"
+        />
+
+
+</LinearLayout>
